@@ -23,3 +23,11 @@ h1 {
 audio {
   margin-top: 20px;
 }
+.top-left-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100px;
+  height: auto;
+  z-index: 1;
+}
