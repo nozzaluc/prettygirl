@@ -1,3 +1,4 @@
+/* styles.css */
 body {
   font-family: arial, sans-serif;
   background-color: #f0f0f0;
@@ -15,6 +16,7 @@ body {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
+  position: relative;
 }
 
 .heart-container {
@@ -22,15 +24,24 @@ body {
   width: 800px;
   height: 800px;
   margin: 20px auto;
-  overflow: visible;
 }
 
+/* the pink heart shape behind the images */
+.heart-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0; /* behind images */
+}
+
+/* each image in the heart fill */
 .heart-image {
   position: absolute;
   width: 50px;
   height: auto;
   transition: transform 0.3s;
   cursor: pointer;
+  z-index: 1; /* in front of pink shape */
 }
 
 .heart-image:hover {
@@ -39,5 +50,6 @@ body {
 
 .heart-image.enlarged {
   transform: scale(2);
-  z-index: 10;
+  z-index: 2;
 }
+
