@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>happy valetines pretty</title>
   <link rel="stylesheet" href="styles.css">
@@ -13,7 +13,6 @@
     <div class="heart-container"></div>
   </div>
   <script>
-    // list of image files (only image files)
     const imageFiles = [
       "043n8222-66ce-4002-8370-3d567a2ba157.JPG",
       "07002a91-3da1-41d0-84c8-76d1416f4c5f.JPG",
@@ -50,4 +49,68 @@
       "IMG_1939.PNG",
       "IMG_2551.JPG",
       "IMG_2555.PNG",
-      "IM
+      "IMG_2569.JPG",
+      "IMG_2573.JPG",
+      "IMG_3411.jpg",
+      "IMG_3415.PNG",
+      "IMG_3838.jpg",
+      "IMG_3864.jpg",
+      "IMG_3964.JPG",
+      "IMG_4093.PNG",
+      "IMG_4172.JPG",
+      "IMG_4191.jpg",
+      "IMG_4193.jpg",
+      "IMG_4315.JPG",
+      "IMG_4413.JPG",
+      "IMG_4414.JPG",
+      "IMG_4440.JPG",
+      "IMG_4442.JPG",
+      "IMG_4507.JPG",
+      "IMG_4508.JPG",
+      "IMG_4509.JPG",
+      "IMG_4729.jpg",
+      "IMG_4733.jpg",
+      "IMG_4756.jpg",
+      "IMG_4870.jpg",
+      "IMG_5001.JPG",
+      "IMG_5003.JPG",
+      "IMG_5112.jpg",
+      "IMG_5138.jpg",
+      "IMG_5668.jpg",
+      "IMG_5696.jpg",
+      "a1177846-7894-4026-8e8f-c68a64699771.JPG",
+      "a275e36b-9d63-4d49-a0db-c5c938ff3319.JPG",
+      "bereal.JPG",
+      "cb10cb3e-3a7b-4e21-875b-5881dfdb48c0.JPG",
+      "cdd81c5e-61db-4695-9c0d-282acd5cd903.JPG",
+      "couch.JPG",
+      "e5f1069b-b52f-42ba-ae9c-623843954250.JPG",
+      "mirror.JPG",
+      "nye.JPG",
+      "wallp.PNG"
+    ];
+    
+    const container = document.querySelector('.heart-container');
+    const count = imageFiles.length;
+    const scale = 20; // adjust this value to change the heart size
+    const offsetX = 400;
+    const offsetY = 400;
+    
+    for (let i = 0; i < count; i++) {
+      const t = (i / count) * 2 * Math.PI;
+      const x = 16 * Math.pow(Math.sin(t), 3);
+      const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+      const left = offsetX + x * scale;
+      const top = offsetY - y * scale;
+      
+      const img = document.createElement('img');
+      img.src = imageFiles[i];
+      img.alt = 'heart image';
+      img.classList.add('heart-image');
+      img.style.left = left + 'px';
+      img.style.top = top + 'px';
+      container.appendChild(img);
+    }
+  </script>
+</body>
+</html>
