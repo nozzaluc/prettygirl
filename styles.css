@@ -26,7 +26,7 @@ body {
   margin: 20px auto;
 }
 
-/* pink outline, no fill */
+/* pink fill behind images */
 .heart-bg {
   position: absolute;
   top: 0;
@@ -34,14 +34,14 @@ body {
   z-index: 0;
 }
 
-/* images along outline */
+/* images on the perimeter */
 .heart-image {
   position: absolute;
   width: 50px;
   height: auto;
   transition: transform 0.3s;
   cursor: pointer;
-  z-index: 1;
+  z-index: 1; /* on top of pink */
 }
 
 .heart-image:hover {
