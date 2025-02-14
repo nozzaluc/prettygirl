@@ -1,38 +1,158 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>happy valentines day bokka</title>
+    <style>
+      body {
+        font-family: arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 20px;
+      }
+      h1 {
+        color: #0047ab; /* cobalt blue */
+      }
+      .heart-container {
+        position: relative;
+        width: 800px; /* adjust as needed */
+        height: 800px;
+        margin: 0 auto;
+      }
+      .heart-container img {
+        position: absolute;
+        /* if you want to clip each image into a heart shape, uncomment below */
+        /* clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>happy valentines day bokka</h1>
+      <p>thank you for you and everything you are to me. i love you.</p>
+    </div>
+    <div class="heart-container" id="heartContainer">
+      <!-- images will be added here -->
+    </div>
+    <script>
+      // array of your 74 image filenames
+      const images = [
+        "043d8222-66ce-4002-8370-3d567a2ba157.JPG",
+        "07002a91-3da1-41d0-84c8-76d1416f4c5f.JPG",
+        "0ADACFA7-EE94-4CAF-B1B1-D57726CA1C2B.JPG",
+        "0bd93495-8645-4cf9-b562-26f93250e056.JPG",
+        "29BE5233-F8D4-4A00-951D-47F07813F168.JPG",
+        "4011d12c-2fac-436e-a049-ce90ce68ee32.JPG",
+        "442be0cf-48e8-4f41-872c-7f9c77df1ed4.JPG",
+        "49C85620-7192-42D7-B5B7-7B6E32D1DB1A.JPG",
+        "4a6e1065-292b-41f0-9412-98839f3da55c.JPG",
+        "52bf7c7d-9801-4da0-aa63-df9f449dcde0.JPG",
+        "53F7D812-5F91-4C44-82F2-D2D4EAF84ED3.JPG",
+        "624A679E-FD75-427C-82AC-C0C7F6C63C86.JPG",
+        "6b8a6431-f461-4855-b06a-3b44938d7f0f.JPG",
+        "7B594F5F-E7BE-44C8-B679-A8B2069D3A95.JPG",
+        "7afe5e73-53a3-4040-afd5-777bda827d25.JPG",
+        "8606E76C-47EC-4E72-ABDE-B173931175B0.JPG",
+        "88751899-f1fc-4cb6-8b2c-18342d5a5d66.JPG",
+        "A346441E-4FA2-4A04-A9A8-8BE214E3F679.JPG",
+        "A8C414B4-D9DD-4F45-9FF5-18803792182B.JPG",
+        "BAE45C19-209D-4BB4-A84B-089648586875.JPG",
+        "C1AB7C9A-8225-49EA-AFFF-CA62160A7CCA.JPG",
+        "C6DF21EF-48E2-4461-B7ED-22806E8E296F.JPG",
+        "DD7DD45A-C642-4C99-BCEF-8C12B9D3CB5B.JPG",
+        "EFC054FB-285F-4A80-927C-A971EF11C6D5.JPG",
+        "F035CA46-7D7C-4FA1-82D8-18A56A142244.JPG",
+        "IMG_0980.JPG",
+        "IMG_1216.JPG",
+        "IMG_1275.JPG",
+        "IMG_1291.JPG",
+        "IMG_1412.JPG",
+        "IMG_1426.JPG",
+        "IMG_1430.JPG",
+        "IMG_1939.PNG",
+        "IMG_2551.JPG",
+        "IMG_2555.PNG",
+        "IMG_2569.JPG",
+        "IMG_2573.JPG",
+        "IMG_3411.jpg",
+        "IMG_3415.PNG",
+        "IMG_3838.jpg",
+        "IMG_3864.jpg",
+        "IMG_3964.JPG",
+        "IMG_4093.PNG",
+        "IMG_4172.JPG",
+        "IMG_4191.jpg",
+        "IMG_4193.jpg",
+        "IMG_4315.JPG",
+        "IMG_4413.JPG",
+        "IMG_4414.JPG",
+        "IMG_4440.JPG",
+        "IMG_4442.JPG",
+        "IMG_4507.JPG",
+        "IMG_4508.JPG",
+        "IMG_4509.JPG",
+        "IMG_4729.jpg",
+        "IMG_4733.jpg",
+        "IMG_4756.jpg",
+        "IMG_4870.jpg",
+        "IMG_5001.JPG",
+        "IMG_5003.JPG",
+        "IMG_5112.jpg",
+        "IMG_5138.jpg",
+        "IMG_5668.jpg",
+        "IMG_5696.jpg",
+        "a1177846-7894-4026-8e8f-c68a64699771.JPG",
+        "a275e36b-9d63-4d49-a0db-c5c938ff3319.JPG",
+        "bereal.JPG",
+        "cb10cb3e-3a7b-4e21-875b-5881dfdb48c0.JPG",
+        "cdd81c5e-61db-4695-9c0d-282acd5cd903.JPG",
+        "couch.JPG",
+        "e5f1069b-b52f-42ba-ae9c-623843954250.JPG",
+        "mirror.JPG",
+        "nye.JPG"
+      ];
 
-.card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+      const container = document.getElementById("heartContainer");
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
+      const centerX = containerWidth / 2;
+      const centerY = containerHeight / 2;
+      const numImages = images.length;
+      const scale = 10; // adjust scale for desired heart size
 
-h1 {
-  color: #ff5e63;
-}
+      // use the classic heart parametric equations:
+      // x = 16 * sin^3(t)
+      // y = 13*cos(t) - 5*cos(2*t) - 2*cos(3*t) - cos(4*t)
+      images.forEach((src, i) => {
+        const img = document.createElement("img");
+        img.src = src;
+        // optionally set a fixed width/height if needed:
+        // img.style.width = "50px";
 
-audio {
-  margin-top: 20px;
-}
+        const t = (i / numImages) * Math.PI * 2; // parameter from 0 to 2pi
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
 
-.top-left-image {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 100px;
-  height: auto;
-  z-index: 1;
-}
+        // position relative to the container's center (invert y to account for screen coords)
+        const posX = centerX + scale * x;
+        const posY = centerY - scale * y;
+        img.style.left = posX + "px";
+        img.style.top = posY + "px";
 
-img {
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
+        container.appendChild(img);
+      });
+    </script>
+  </body>
+</html>
