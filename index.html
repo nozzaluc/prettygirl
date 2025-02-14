@@ -8,29 +8,26 @@
 </head>
 <body>
   <div class="card">
-    <!-- title -->
     <h1>happy valetines pretty</h1>
-    
-    <!-- audio between heading and heart -->
-    <audio controls>
-      <source src="Mac_DeMarco_My_Kind_Of_Woman[EagleConverter.com].mp3" type="audio/mpeg">
-      your browser does not support the audio element.
-    </audio>
-    
-    <!-- heart container with baby-pink fill behind the outline -->
+    <p>thank you for you being, and for everything you are to me</p>
+
+    <!-- heart container with a baby-pink fill -->
     <div class="heart-container">
       <svg class="heart-bg" width="800" height="800">
+        <!-- use fill-rule to ensure the interior fills, even if param eqn crosses itself -->
         <path id="heartPath" fill="#ffc0cb" fill-rule="evenodd" stroke="none" />
       </svg>
     </div>
 
-    <!-- small text + personal message -->
     <p>my kind of woman</p>
-    <p>thank you for you being, and for everything you are to me</p>
+    <audio controls>
+      <source src="Mac_DeMarco_My_Kind_Of_Woman[EagleConverter.com].mp3" type="audio/mpeg">
+      your browser does not support the audio element.
+    </audio>
   </div>
 
   <script>
-    // all your image filenames
+    // images you want placed around the outline
     const imageFiles = [
       "043d8222-66ce-4002-8370-3d567a2ba157.JPG",
       "07002a91-3da1-41d0-84c8-76d1416f4c5f.JPG",
@@ -108,19 +105,16 @@
       "wallp.PNG"
     ];
 
-    // build the pink heart path in the svg
+    // 1) build a pink heart path in the svg
     const pathEl = document.getElementById('heartPath');
     pathEl.setAttribute('d', makeHeartPath());
 
-    // shift y-offset so the heart is centered in an 800×800
-    const scale = 10;
-    const offsetX = 400;
-    const offsetY = 340; // better vertical centering
-
     function makeHeartPath() {
       // param eqn: x=16 sin^3(t), y=13 cos(t)-5 cos(2t)-2 cos(3t)-cos(4t)
-      // run t from 0..2π, close path
+      // run t from 0..2π, accumulate line segments
       let d = "";
+      const scale = 10;
+      const ox = 400, oy = 400;
       let first = true;
       for (let theta = 0; theta <= 2*Math.PI; theta += 0.01) {
         const x = 16 * Math.pow(Math.sin(theta), 3);
@@ -128,8 +122,8 @@
                   - 5 * Math.cos(2*theta)
                   - 2 * Math.cos(3*theta)
                   - Math.cos(4*theta);
-        const px = offsetX + x * scale;
-        const py = offsetY - y * scale;
+        const px = ox + x * scale;
+        const py = oy - y * scale;
         if (first) {
           d += `M ${px},${py}`;
           first = false;
@@ -141,9 +135,12 @@
       return d;
     }
 
-    // place images along the outline
+    // 2) place images along the outline
     const container = document.querySelector('.heart-container');
     const count = imageFiles.length;
+    const scale = 10;
+    const ox = 400, oy = 400;
+
     for (let i = 0; i < count; i++) {
       const t = (i / count) * 2 * Math.PI;
       const x = 16 * Math.pow(Math.sin(t), 3);
@@ -151,8 +148,8 @@
                 - 5 * Math.cos(2*t)
                 - 2 * Math.cos(3*t)
                 - Math.cos(4*t);
-      const px = offsetX + x * scale;
-      const py = offsetY - y * scale;
+      const px = ox + x * scale;
+      const py = oy - y * scale;
       
       const img = document.createElement('img');
       img.src = imageFiles[i];
@@ -160,12 +157,12 @@
       img.classList.add('heart-image');
       img.style.left = px + 'px';
       img.style.top = py + 'px';
-      
-      // toggle enlarge on click
+
+      // enlarge on click
       img.addEventListener('click', () => {
         img.classList.toggle('enlarged');
       });
-      
+
       container.appendChild(img);
     }
   </script>
