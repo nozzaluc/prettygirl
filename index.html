@@ -10,14 +10,15 @@
   <div class="card">
     <h1>happy valetines pretty</h1>
     <p>thank you for you being, and for everything you are to me</p>
-    
+
+    <!-- heart container with a pink heart behind -->
     <div class="heart-container">
-      <!-- pink outline only -->
       <svg class="heart-bg" width="800" height="800">
-        <path id="heartPath" fill="none" stroke="#ffc0cb" stroke-width="4"/>
+        <path id="heartPath" fill="#ffc0cb" stroke="none" />
       </svg>
     </div>
 
+    <!-- label + audio at the bottom -->
     <p>my kind of woman</p>
     <audio controls>
       <source src="Mac_DeMarco_My_Kind_Of_Woman[EagleConverter.com].mp3" type="audio/mpeg">
@@ -103,19 +104,18 @@
       "wallp.PNG"
     ];
 
-    // set the path d attribute to create the pink outline
+    // build the pink heart path for the background
     const pathEl = document.getElementById('heartPath');
     pathEl.setAttribute('d', makeHeartPath());
 
     function makeHeartPath() {
-      // standard param eqn
-      // x = 16 sin^3(t), y = 13 cos(t) - 5 cos(2t) - 2 cos(3t) - cos(4t)
-      // scaled + offset
+      // param eqn for a heart: x=16 sin^3(t), y=13 cos(t)-5 cos(2t)-2 cos(3t)-cos(4t)
+      // we'll trace from t=0..2π
       let d = "";
       const scale = 10;
       const ox = 400, oy = 400;
       let first = true;
-      for (let theta = 0; theta <= 2*Math.PI; theta += 0.02) {
+      for (let theta = 0; theta <= 2 * Math.PI; theta += 0.02) {
         const x = 16 * Math.pow(Math.sin(theta), 3);
         const y = 13 * Math.cos(theta)
                   - 5 * Math.cos(2*theta)
@@ -134,13 +134,14 @@
       return d;
     }
 
-    // place images along the outline
+    // place images along the heart outline
     const container = document.querySelector('.heart-container');
     const count = imageFiles.length;
     const scale = 10;
     const ox = 400, oy = 400;
 
     for (let i = 0; i < count; i++) {
+      // param from 0..2π
       const t = (i / count) * 2 * Math.PI;
       const x = 16 * Math.pow(Math.sin(t), 3);
       const y = 13 * Math.cos(t)
@@ -153,7 +154,7 @@
       const img = document.createElement('img');
       img.src = imageFiles[i];
       img.alt = 'heart image';
-      img.className = 'heart-image';
+      img.classList.add('heart-image');
       img.style.left = px + 'px';
       img.style.top = py + 'px';
       
