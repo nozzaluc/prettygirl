@@ -17,15 +17,12 @@ body {
   text-align: center;
 }
 
-h1 {
-  color: #ff5e63;
-}
-
 .heart-container {
   position: relative;
   width: 800px;
   height: 800px;
   margin: 20px auto;
+  overflow: visible;
 }
 
 .heart-image {
