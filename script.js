@@ -42,7 +42,6 @@ const imageFiles = [
   "IMG_3838.jpg",
   "IMG_3864.jpg",
   "IMG_3964.JPG",
-  "IMG_4093.PNG",
   "IMG_4172.JPG",
   "IMG_4191.jpg",
   "IMG_4193.jpg",
@@ -143,8 +142,20 @@ function openSlideshow(index) {
   
   const modal = document.getElementById("slideshow-modal");
   const modalImg = document.getElementById("modal-image");
+  
+  // Preload next/previous images
+  const preloadIndexes = [
+    (index - 1 + imageFiles.length) % imageFiles.length,
+    (index + 1) % imageFiles.length
+  ];
+  
+  preloadIndexes.forEach(i => {
+    const img = new Image();
+    img.src = imageFiles[i];
+  });
+
   modalImg.src = imageFiles[index];
-  modal.style.display = "block";
+  modal.style.display = "flex"; // Changed to flex for better centering
 }
 
 function closeSlideshow() {
@@ -169,6 +180,22 @@ function navigateSlideshow(direction) {
 document.querySelector(".close").addEventListener("click", closeSlideshow);
 document.querySelector(".prev").addEventListener("click", () => navigateSlideshow(-1));
 document.querySelector(".next").addEventListener("click", () => navigateSlideshow(1));
+
+// Add touch event listeners for mobile swiping
+let touchStartX = 0;
+
+document.addEventListener('touchstart', e => {
+  touchStartX = e.touches[0].clientX;
+});
+
+document.addEventListener('touchend', e => {
+  const touchEndX = e.changedTouches[0].clientX;
+  const deltaX = touchEndX - touchStartX;
+  
+  if (Math.abs(deltaX) > 50) {
+    navigateSlideshow(deltaX > 0 ? -1 : 1);
+  }
+});
 
 // Close the modal if the user clicks outside of it
 window.addEventListener("click", (event) => {

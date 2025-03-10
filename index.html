@@ -28,9 +28,13 @@
     <!-- Slideshow modal -->
     <div id="slideshow-modal" class="modal">
       <span class="close">&times;</span>
-      <img class="modal-content" id="modal-image">
-      <a class="prev">&#10094;</a>
-      <a class="next">&#10095;</a>
+      <div class="modal-content-wrapper">
+        <img class="modal-content" id="modal-image" alt="Slideshow image">
+        <div class="nav-buttons">
+          <button class="prev" aria-label="Previous image">❮</button>
+          <button class="next" aria-label="Next image">❯</button>
+        </div>
+      </div>
     </div>
   </div>
 
