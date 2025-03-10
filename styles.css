@@ -1,4 +1,4 @@
-/* styles.css */
+/* General styles */
 body {
   font-family: arial, sans-serif;
   background-color: #f0f0f0;
@@ -16,36 +16,71 @@ body {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
-  position: relative;
 }
 
+.audio-player {
+  margin-bottom: 20px; /* Space between audio and heart */
+}
+
+/* Heart container */
 .heart-container {
   position: relative;
-  width: 800px;
-  height: 800px;
-  margin: 20px auto;
+  width: 1000px; /* Wider heart */
+  height: 1000px;
 }
 
-/* baby-pink fill behind images */
 .heart-bg {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 0;
 }
 
 .heart-image {
   position: absolute;
-  width: 50px;
+  width: 60px; /* Slightly larger images */
   height: auto;
   transition: transform 0.3s;
   cursor: pointer;
-  z-index: 1; /* images in front of pink fill */
 }
 
 .heart-image:hover {
   transform: scale(1.2);
 }
+
+/* Slideshow modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 3; /* Above other elements */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Scroll if needed */
+  background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: calc(100% - 40px); /* Responsive image size */
+}
+
+.close {
+  position: absolute;
+  top: calc(5% + -10px);
+ right:-10%;
+ color:#fff
+ font-size:-10%
+}
+
+/* Navigation buttons */
+.prev,
+.next {
+ cursor:pointer
+
+}
+
 
 .heart-image.enlarged {
   transform: scale(2);
